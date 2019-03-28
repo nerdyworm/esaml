@@ -569,10 +569,11 @@ to_xml(#esaml_logoutresp{version = V, issue_instant  = Time,
       ],
 
       OrganizationElem = #xmlElement{name = 'md:Organization',
-          content =
-              lang_elems(#xmlElement{name = 'md:OrganizationName'}, OrgName) ++
-              lang_elems(#xmlElement{name = 'md:OrganizationDisplayName'}, OrgDisplayName) ++
-              lang_elems(#xmlElement{name = 'md:OrganizationURL'}, OrgUrl)
+          content =[
+             #xmlElement{name = 'md:OrganizationName', content = [#xmlText{value = OrgName}]},
+             #xmlElement{name = 'md:OrganizationDisplayName', content = [#xmlText{value = OrgDisplayName}]},
+             #xmlElement{name = 'md:OrganizationURL', content = [#xmlText{value = OrgUrl}]}
+         ]
       },
 
       ContactElem = #xmlElement{name = 'md:ContactPerson',
